@@ -19,7 +19,21 @@
 
 #include <stdio.h> 
 
+void handle_error( char *error_code ){
+
+	printf("dead: %s \n", error_code );
+	return;
+}
+
 void main(){
-	printf("test git ");
+
+	FILE *pSavegame;
+
+	printf("testing git... \n");
+	pSavegame = fopen ( "savegame.txt", "r" );
+	if (pSavegame == NULL ) handle_error( "fopen1" );
+	printf("file open \n");
+	if ( fclose ( pSavegame ) != 0 ) handle_error( "fclose1" );
+	printf("file closed \n");
 	return;
 }
